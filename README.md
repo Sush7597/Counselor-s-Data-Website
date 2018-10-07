@@ -1,2 +1,2 @@
 # Counselor-s-Data-Website
-Counselor's data website for college
+Counselor's data dynamic website for college
