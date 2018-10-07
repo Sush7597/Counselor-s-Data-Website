@@ -1,0 +1,100 @@
+<script>
+$(window).resize(function() {
+	var path = $(this);
+	var contW = path.width();
+	if(contW >= 751){
+		document.getElementsByClassName("sidebar-toggle")[0].style.left="250px";
+	}else{
+		document.getElementsByClassName("sidebar-toggle")[0].style.left="-250px";
+	}
+});
+$(document).ready(function() {
+	$('.dropdown').on('show.bs.dropdown', function(e){
+	    $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+	});
+	$('.dropdown').on('hide.bs.dropdown', function(e){
+		$(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
+	});
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		var elem = document.getElementById("sidebar-wrapper");
+		left = window.getComputedStyle(elem,null).getPropertyValue("left");
+		if(left == "250px"){
+			document.getElementsByClassName("sidebar-toggle")[0].style.left="-250px";
+		}
+		else if(left == "-250px"){
+			document.getElementsByClassName("sidebar-toggle")[0].style.left="250px";
+		}
+	});
+});
+</script>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a id="menu-toggle" href="#" class="navbar-toggle collapsed" data-toggle="collapse">
+					<span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>  
+			</a>
+  			<a class="navbar-brand" href="dashboard.php">
+  				Counsilor Data
+  			</a>
+		</div>
+				<ul class = "nav navbar-nav nav-pills navbar-right" >
+								<li class = "label-cont">
+									<a href="logout.php">
+										<span class="glyphicon glyphicon-log-out"/> Logout</a>
+								</li>
+							</ul>
+		<div id="sidebar-wrapper" class="sidebar-toggle">
+			<ul class="sidebar-nav">
+		    	<li>
+		      		<a href="dashboard.php">Dashboard</a>
+		    	</li>
+		    	<li>
+		      		<a href="ayears.php">Academic Years</a>
+		    	</li>
+		    	<li>
+		      		<a href="ausers.php">Admin Users</a>
+		    	</li>
+				<li>
+		      		<a href="batches.php">Batches</a>
+		    	</li>
+				<li>
+		      		<a href="cmnts.php">Comments</a>
+		    	</li>
+				<li>
+		      		<a href="cov.php">Course Outcome Values</a>
+		    	</li>
+				<li>
+		      		<a href="co.php">Course Outcomes</a>
+		    	</li>
+				<li>
+		      		<a href="courses.php">Courses</a>
+		    	</li>
+				<li>
+		      		<a href="pov.php">Program Outcome Values</a>
+		    	</li>
+				<li>
+		      		<a href="po.php">Program Outcomes</a>
+		    	</li>
+				<li>
+		      		<a href="psov.php">Program Source Outcome Values</a>
+		    	</li>
+				<li>
+		      		<a href="pso.php">Program Source Outcomes</a>
+		    	</li>
+				<li>
+		      		<a href="sem.php">Semesters</a>
+		    	</li>
+				<li>
+		      		<a href="users.php">Users</a>
+		    	</li>
+				<li>
+		      		<a href="logout.php">Logout</a>
+		    	</li>
+		  	</ul>
+		</div>
+  	</div>
+</nav>
