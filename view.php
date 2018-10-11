@@ -16,24 +16,29 @@ $(function(){
 $("#include_html").load("sidebar.html");
 });
 </script>
+<div id="include_html"></div>
+</div>
 <?php 
 require 'config.php';
 include "session.php";
-
 $db = db_open();
-$email = $_GET['view-user'];
-$result = mysqli_query($db,"Select * from users where `E-Mail` = '$email'");
+$email = $_SESSION['login_user'];
+$result = mysqli_query($db, "SELECT * FROM admin_users WHERE email = '$email'");
+$row = mysqli_fetch_array($result);
+$batch = $row['batch'];
+$year = $row['year'];
+$ID = $_GET['view-user'];
+$database = $_GET['db'];
+$result = mysqli_query($db,"SELECT * FROM `$database` where `ID` = '$ID'");
 $row= mysqli_fetch_assoc($result);
-$id = $row['ID'];
-
 ?>
 <body>
-<div id="include_html"></div>
-</div>
-<div id="head" class = "col-xs-9 col-xs-offset-3">
+<div id="head" class = "col-xs-9 col-xs-offset-3" style = "margin-top : 5%;">
 <div>
 <?php
-echo "<h2 style ='float: left'>User / View User</h2> <a href = 'edit_user.php?id=".$id."'> <button type = 'button' class = 'btn btn-default btn-md' style ='float: right; margin-top: 2.5%; margin-right : 4%;'>Edit User </button></a>";
+echo "<h2 style ='float: left'>Student / View</h2>";
+if(($year == $database)&&($batch == $row['Group'] ))
+	echo "<a href = 'edit_user.php?view-user=".$row['ID']."&group=".$row['Group']."&db=".$database."'> <button type = 'button' class = 'btn btn-default btn-md' style ='float: right; margin-top: 2.5%; margin-right : 4%;'>Edit Data </button></a>";
 ?>
 </div>
 <?php
