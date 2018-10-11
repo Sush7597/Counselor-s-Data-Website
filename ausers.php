@@ -19,7 +19,7 @@ $("#include_html").load("sidebar.html");
 <body>
 <div id="include_html"></div>
 </div>
-<div id="head" class = "col-xs-9 col-xs-offset-3">
+<div id="head" class = "col-xs-9 col-xs-offset-3" style = "margin-top : 5%;">
 <div>
 <h2 style ="float: left">Admin Users</h2> <a href = "new_auser.php"> <button type = "button" class = "btn btn-default btn-md" style ="float: right; margin-top: 2.5%; margin-right : 4%;">New Admin User </button></a> 
 </div>
@@ -31,8 +31,8 @@ $db = db_open();
 $result = mysqli_query($db,"Select * from admin_users");
 $row= mysqli_fetch_assoc($result);
 echo "<div class = 'container' style = 'margin-top : 10%'>";
-		$arr = array("ID" , "Email" , "Name" , "Created At" );
-		echo "<table class = 'table-hover table-bordered table-responsive' >";
+		$arr = array("ID" , "Email" , "Name" , "Created At" , "Year" , "Batch" );
+		echo "<table class = 'table-hover table-bordered table-responsive'>";
 		echo "<center>";
 		foreach($arr as $item)
 		echo "<th style='width:200px; text-align : center; height : 30px; background-color :#E6E6E6;'>".$item."</th>";
@@ -40,7 +40,20 @@ echo "<div class = 'container' style = 'margin-top : 10%'>";
 		{
 			echo "<tr>";
 			foreach($row as $key=>$row1)
-			{	if($key != "password")
+			{				if($row1 == "2nd_year_1)")
+								$row1 = "2nd Year 1st Shift";
+							if($row1=="2nd_year_2)")
+								$row1 = "2nd Year 2nd Shift";
+							if($row1 == "3rd_year_1)")
+								$row1 = "3rd Year 1st Shift";
+							if($row1 == "3rd_year_2)")
+								$row1 = "3rd Year 2nd Shift";
+							if($row1 == "4th_year_1)")
+								$row1 = "4th Year 1st Shift";
+							if($row1 == "4th_year_2)")
+								$row1 = "4th Year 2nd Shift";	
+							
+			if($key != "password")
 				{
 				if($row1 == null)
 				$row1="-----";

@@ -1,8 +1,7 @@
 <?php
 function db_open()
 {
-	// connecting with Database
-	$conn = mysqli_connect("localhost","root","","clg");
+	$conn = mysqli_connect("localhost:3306","counscma_counscm","counc@654321^%$#@!","counscma_clg");
 	if(!$conn)
 	{
 		die('Could not connect: ' . mysqli_error());

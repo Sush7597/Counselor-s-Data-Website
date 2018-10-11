@@ -19,7 +19,7 @@ $("#include_html").load("sidebar.html");
 <body>
 <div id="include_html"></div>
 </div>
-<div id="head" class = "col-xs-9 col-xs-offset-3">
+<div id="head" class = "col-xs-9 col-xs-offset-3" style = "margin-top : 5%;">
 <div>
 <h2 style ="float: left">Batches</h2> <a href = "new_batch.php"> <button type = "button" class = "btn btn-default btn-md" style ="float: right; margin-top: 2.5%; margin-right : 4%;">New Batch </button></a> 
 </div>

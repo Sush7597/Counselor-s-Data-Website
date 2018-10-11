@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<?php 
-	include 'config.php';
+<?php
+	session_start();
+	require 'config.php';
 	ini_set('display_errors',0);
 	$db = db_open();
 	if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -9,17 +9,15 @@
 	$pass = $_POST['pass'];       
 	$result = mysqli_query($db, "SELECT * FROM admin_users WHERE email = '$email' and password = '$pass'");
 	$row = mysqli_fetch_array($result);
-	$count = mysqli_num_rows($result);      		
-	if($count == 1) {
-		session_start();
-		$_SESSION['login_user'] = $email;
+	$count = mysqli_num_rows($result);
+	if($count == 1){
+		$_SESSION["login_user"] = $email;
 		$_SESSION["islogged_in"]=true;
-		header("location: Dashboard.php");
+		header("location: dashboard.php");
 	}
-	else {
+	else{
 		echo '<script>',"alert('Invalid E-Mail Or Password!');",'</script>';
-	}
-		
+	}	
 	}
 ?>
 <html>
@@ -34,7 +32,7 @@
 			</head>
 
 			<body>
-				<nav class = "navbar navbar-fixed-top navbar-inverse ">
+				<nav class = "navbar navbar-fixed-top navbar-default ">
 					<div class = "container">
 						<div class = "navbar-header">
 							<button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar">
